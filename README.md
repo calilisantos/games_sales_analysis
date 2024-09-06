@@ -1,4 +1,4 @@
-* **Descrição:**
+* ## **Descrição:**
 * **Desafio:** Análise de Vendas de Jogos de Videogames
   * **Objetivo:**
     Os participantes devem consultar e analisar dados de vendas de jogos de videogames a partir do repositório disponível no Kaggle. O objetivo é criar um pipeline que permita explorar insights sobre as tendências de vendas, plataformas mais populares, e o desempenho de jogos ao longo dos anos.
@@ -31,5 +31,15 @@
     * Implementar uma previsão simples para vendas futuras usando um modelo de regressão linear ou outro algoritmo de aprendizado de máquina. 
     * Publicar a análise em um repositório no GitHub com README explicativo.
 
+* ## **Desenvolvimento:**
 
-* **Fonte:** <https://www.kaggle.com/code/lusfernandotorres/vendas-de-jogos-de-videogames/input?select=vgsales.csv>
+* ### **Criando ambiente virtual:**
+```bash
+# game_analysis já considerado no .gitignore
+python3 -m venv game_analysis && source game_analysis/bin/activate
+```
+
+* ### **Instalando dependências:**
+```bash
+pip install -r requirements.txt
+```
