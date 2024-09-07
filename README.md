@@ -27,7 +27,7 @@
   * **Entrega:** 
     * Um notebook Python (Jupyter Notebook) documentado com a análise, código e visualizações; 
     * Uma breve apresentação (slides ou documento) destacando os principais insights descobertos.
-  **Extras (Opcional):**
+  * **Extras (Opcional):**
     * Implementar uma previsão simples para vendas futuras usando um modelo de regressão linear ou outro algoritmo de aprendizado de máquina. 
     * Publicar a análise em um repositório no GitHub com README explicativo.
 
