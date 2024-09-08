@@ -27,7 +27,7 @@
   * **Entrega:** 
     * Um notebook Python (Jupyter Notebook) documentado com a análise, código e visualizações; 
     * Uma breve apresentação (slides ou documento) destacando os principais insights descobertos.
-  **Extras (Opcional):**
+  * **Extras (Opcional):**
     * Implementar uma previsão simples para vendas futuras usando um modelo de regressão linear ou outro algoritmo de aprendizado de máquina. 
     * Publicar a análise em um repositório no GitHub com README explicativo.
 
@@ -43,3 +43,11 @@ python3 -m venv game_analysis && source game_analysis/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
+
+* ## **Próximos Passos:**
+  *  Análise temporal
+    * Vendas ao longo dos anos;
+    * Vendas por região ao longo dos anos;
+    * Vendas por gênero ao longo dos anos;
+    * Plataforma mais longeva;
+    * Principais publishers ao longo dos anos.
