@@ -346,7 +346,7 @@ Aqui você vai encontrar os detalhes de como está estruturado e foi desenvolvid
 
 * ## **Próximos Passos:**
   * **Previsão de vendas**
-      * **Feature Engineering**
+      * **Feature Engineering** OK
           * **Normalização dos dados numéricos (valores relativos ou log)**;
           * **Criação de variáveis categóricas (dummies)**;
           * **Avaliar desconsiderar Global_Sales (redundância com vendas regionais)**;
@@ -354,8 +354,8 @@ Aqui você vai encontrar os detalhes de como está estruturado e foi desenvolvid
           * **Análise de correlação entre as variáveis**;
           * **Análise de multicolinearidade entre as variáveis**.
       * **Modelagem**
-          * **Regressão Linear (com a normalização dos dados)**;
-          * **Random Forest**;
+          * **Regressão Linear (com a normalização dos dados)**; OK
+          * **Random Forest**; OK
           * **XGBoost**;
   *  **Análise temporal**
       * Vendas ao longo dos anos;
