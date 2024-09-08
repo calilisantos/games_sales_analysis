@@ -43,3 +43,11 @@ python3 -m venv game_analysis && source game_analysis/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
+
+* ## **Próximos Passos:**
+  *  Análise temporal
+    * Vendas ao longo dos anos;
+    * Vendas por região ao longo dos anos;
+    * Vendas por gênero ao longo dos anos;
+    * Plataforma mais longeva;
+    * Principais publishers ao longo dos anos.
