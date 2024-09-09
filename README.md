@@ -2,7 +2,7 @@
 
 Para executar o projeto, observe as orientações descritas a seguir, e se tiver qualquer dúvida, sugestão, contribuição, considere abrir uma issue ou entrar em contato. 🚀
 
-Aqui você vai encontrar os detalhes de como está estruturado e foi desenvolvido o levantamento.
+Aqui você vai encontrar os detalhes de como está estruturado e foi desenvolvida a análise.
 
 * ## **Descrição:**
   <details>
@@ -19,26 +19,26 @@ Aqui você vai encontrar os detalhes de como está estruturado e foi desenvolvid
   <details>
     <summary><strong>Instruções</strong></summary>
 
-      * **Fonte de Dados:**
-        Utilize o conjunto de dados disponível em [Kaggle: Vendas de Jogos de Videogames](https://www.kaggle.com/code/lusfernandotorres/vendas-de-jogos-de-videogames/input). 
-      * **Tarefas:** 
-        * **Consulta e Ingestão:** 
-          * Baixar o conjunto de dados; 
-          * Carregar os dados em um DataFrame utilizando Pandas. 
-        * **Exploração Inicial:** 
-          * Visualizar a estrutura dos dados e realizar uma análise exploratória (EDA) para entender as colunas e o tipo de dados.
-        * **Limpeza dos Dados:** 
-          * Identificar e tratar valores ausentes; 
-          * Remover duplicatas; 
-          * Corrigir eventuais inconsistências 
-        * **Análise de Tendências:** 
-          * Identificar as principais plataformas, 
-          * Gêneros de jogos mais vendidos, 
-          * Evolução das vendas ao longo dos anos. 
-        * **Visualização:** 
-          * Criar gráficos que mostrem as tendências de vendas;
-          * O desempenho por plataforma;
-          * Outros insights relevantes. 
+    * **Fonte de Dados:**
+      Utilize o conjunto de dados disponível em [Kaggle: Vendas de Jogos de Videogames](https://www.kaggle.com/code/lusfernandotorres/vendas-de-jogos-de-videogames/input). 
+    * **Tarefas:** 
+      * **Consulta e Ingestão:** 
+        * Baixar o conjunto de dados; 
+        * Carregar os dados em um DataFrame utilizando Pandas. 
+      * **Exploração Inicial:** 
+        * Visualizar a estrutura dos dados e realizar uma análise exploratória (EDA) para entender as colunas e o tipo de dados.
+      * **Limpeza dos Dados:** 
+        * Identificar e tratar valores ausentes; 
+        * Remover duplicatas; 
+        * Corrigir eventuais inconsistências 
+      * **Análise de Tendências:** 
+        * Identificar as principais plataformas, 
+        * Gêneros de jogos mais vendidos, 
+        * Evolução das vendas ao longo dos anos. 
+      * **Visualização:** 
+        * Criar gráficos que mostrem as tendências de vendas;
+        * O desempenho por plataforma;
+        * Outros insights relevantes. 
 
     ---
 
@@ -47,12 +47,12 @@ Aqui você vai encontrar os detalhes de como está estruturado e foi desenvolvid
   <details>
     <summary><strong>Entrega</strong></summary>
 
-      * **Entrega:** 
-        * Um notebook Python (Jupyter Notebook) documentado com a análise, código e visualizações; 
-        * Uma breve apresentação (slides ou documento) destacando os principais insights descobertos.
-      * **Extras (Opcional):**
-        * Implementar uma previsão simples para vendas futuras usando um modelo de regressão linear ou outro algoritmo de aprendizado de máquina. 
-        * Publicar a análise em um repositório no GitHub com README explicativo.
+    * **Entrega:** 
+      * Um notebook Python (Jupyter Notebook) documentado com a análise, código e visualizações; 
+      * Uma breve apresentação (slides ou documento) destacando os principais insights descobertos.
+    * **Extras (Opcional):**
+      * Implementar uma previsão simples para vendas futuras usando um modelo de regressão linear ou outro algoritmo de aprendizado de máquina. 
+      * Publicar a análise em um repositório no GitHub com README explicativo.
 
     ---
   </details>
@@ -72,6 +72,8 @@ Aqui você vai encontrar os detalhes de como está estruturado e foi desenvolvid
     ```bash
     pip install -r requirements.txt
     ```
+
+    * ### **Execute o notebook [game_analysis.ipynb](game_analysis.ipynb)**
 
     ---
   </details>
@@ -95,11 +97,11 @@ Aqui você vai encontrar os detalhes de como está estruturado e foi desenvolvid
       * Japão; 
       * Global.
 
-    **Há uma grande assimetria nos dados**, com muitos jogos com vendas muito baixas e poucos jogos com vendas muito altas, o que pode influenciar a modelagem de previsão de vendas futuras.
+    **Há uma grande assimetria nos dados**, com muitos jogos com vendas muito baixas e poucos jogos com vendas muito altas, o que pode influenciar a modelagem de previsão de vendas futuras e eventuais problemas com **_outliers_**.
 
-    **Há poucos valores ausentes**, havendo 16.598 registros, com apenas a coluna `Year` apresentando 271 valores ausentes (16.327 registros), comprometendo análises temporais em um primeiro momento como discutido a seguir.
+    **Há poucos valores ausentes**, havendo 16.598 registros nas colunas completas, As coluna `Year` (271 valores ausentes de 16.327 registros) e `Publisher` (58 valores ausentes de 16.540 registros) são as que **apresentam valores nulos mas que não foram tratados** pois com a amostra usada na previsão de vendas futuras e a baixa incidência desses valores **não comprometeram a análise**.
 
-    **Foi identficado um valor duplicado**. Além dos outliers que vão ser tratados na modelagem dos dados, o único enriquecimento feito pré `feature engineering` foi a verificação de jogos multiplataforma, apresentada na discussão sobre a coluna `Platform`.
+    **Foi identificado um valor duplicado** que foi retirado da amostra. Além dos outliers que vão ser tratados na modelagem dos dados, o único enriquecimento feito pré `feature engineering` foi a verificação de jogos multiplataforma, apresentada na discussão sobre a coluna `Platform`.
 
     * **Tabela 01 - Tipos das colunas**
       | Column       | Non-Null Count | Dtype |
@@ -172,7 +174,9 @@ Aqui você vai encontrar os detalhes de como está estruturado e foi desenvolvid
         - 2011: 1139
       - Ocorrências % top 5 em Year sobre o total: 39.57%
 
-      **Os anos de 2018 e 2019** estão ausentes no conjunto de dados. Porém, **os valores nulos em `Year` são de vários anos**, observando os jogos com essa característica, o que pode comprometer análises temporais afastando essas avaliações inicialmente.
+      **Os anos de 2018 e 2019** estão ausentes no conjunto de dados. Porém, **os valores nulos em `Year` são de vários anos** observando os jogos com essa característica, não podendo haver uma substituição direta dos valores nulos para o intervalo desses anos.
+      
+      Com essa quebra na série histórica que pode comprometer análises temporais se evitou análises temporais para essas avaliações iniciais.
 
     ---
 
@@ -181,24 +185,26 @@ Aqui você vai encontrar os detalhes de como está estruturado e foi desenvolvid
   <details>
     <summary><strong>Top 10 de vendas</strong></summary>
 
-    `Dos 10 jogos mais vendidos`, destaca-se que **todos são da Nintendo** e que nessa ordem, os mercados mais relevantes são América do Norte (maior share para todos os jogos), Europa e Japão.
+    `Dos 10 jogos mais vendidos`, destaca-se que **todos são da Nintendo** e que nessa ordem, os mercados que mais o adquiriram são da América do Norte (maior share para todos os jogos), Europa e Japão.
     
-    `Wii Sports`, o mais vendido, tem mais do que o dobro de vendas do que o segundo colocado. E `Mario` e `Wii`, são termos parte do nome de 4 dos 10 jogos mais vendidos.
+    `Wii Sports`, o mais vendido, tem mais do que o dobro de vendas do segundo colocado. 
+    
+    `Mario` e `Wii`, são termos parte do nome de 4 dos 10 jogos mais vendidos.
 
     * **Tabela 02 - Top 10 jogos vendidos**
 
     | Rank |	Name	| Platform |	Year	| Genre |	Publisher |	Global_Sales | NA_Sales_Share |	EU_Sales_Share	|JP_Sales_Share |	Other_Sales_Share |
     |------|---------|----------|-------|-------|-----------|--------------|-----------------------|-----------------------|----------------------|--------------------------|
-    | 1	  | Wii Sports	| Wii	| 2006	| Sports	| Nintendo	| 82.74	| 41.36	| 28.96	| 3.77	| 8.45 |
-    | 2	  | Super Mario Bros.	| NES	| 1985	| Platform	| Nintendo	| 40.24	| 29.08	| 3.58	| 6.81	| 0.77 |
-    | 3	  | Mario Kart Wii	| Wii	| 2008	| Racing	| Nintendo	| 35.82	| 15.68	| 12.76	| 3.79	| 3.29 |
-    | 4	  | Wii Sports Resort	| Wii	| 2009	| Sports	| Nintendo	| 33.0	| 15.61	| 10.93	| 3.28	| 2.95 |
-    | 5	  | Pokemon Red/Pokemon Blue	| GB	| 1996	| Role-Playing	| Nintendo	| 31.37	| 11.27	| 8.89	| 10.22	| 1.0 |
-    | 6	  | Tetris	| GB	| 1989	| Puzzle	| Nintendo	| 30.26	| 23.2	| 2.26	| 4.22	| 0.58 |
-    | 7	  | New Super Mario Bros.	| DS	| 2006	| Platform	| Nintendo	| 30.01	| 11.38	| 9.23	| 6.5	| 2.9 |
-    | 8	  | Wii Play	| Wii	| 2006	| Misc	| Nintendo	| 29.01	| 14.03	| 9.2	| 2.93	| 2.85 |
-    | 9	  | New Super Mario Bros. Wii	| Wii	| 2009	| Platform	| Nintendo	| 28.61	| 14.59	| 7.06	| 4.7	| 2.26 |
-    | 10	| Duck Hunt	| NES	| 1984	| Shooter	| Nintendo	| 28.31	| 26.93	| 0.63	| 0.28	| 0.47 |
+    | 1	  | Wii Sports	| Wii	| 2006	| Sports	| Nintendo	| 82.74	| 50.15	| 35.07	| 4.56	| 10.22 |
+    | 2	  | Super Mario Bros.	| NES	| 1985	| Platform	| Nintendo	| 40.24	| 72.27	| 8.90	| 16.92	| 1.91 |
+    | 3	  | Mario Kart Wii	| Wii	| 2008	| Racing	| Nintendo	| 35.82	| 44.25		| 35.96	| 10.58	| 9.24 |
+    | 4	  | Wii Sports Resort	| Wii	| 2009	| Sports	| Nintendo	| 33.0	| 47.73	| 33.36	| 9.94	| 8.97 |
+    | 5	  | Pokemon Red/Pokemon Blue	| GB	| 1996	| Role-Playing	| Nintendo	| 31.37	| 35.93	| 28.34		| 32.58	| 3.19 |
+    | 6	  | Tetris	| GB	| 1989	| Puzzle	| Nintendo	| 30.26	| 76.67	| 7.47	| 13.95	| 1.92 |
+    | 7	  | New Super Mario Bros.	| DS	| 2006	| Platform	| Nintendo	| 30.01	| 37.92	| 30.76	| 21.66	| 9.66 |
+    | 8	  | Wii Play	| Wii	| 2006	| Misc	| Nintendo	| 29.02	| 48.35	| 31.70		| 10.10	| 9.82 |
+    | 9	  | New Super Mario Bros. Wii	| Wii	| 2009	| Platform	| Nintendo	| 28.62	| 50.98		| 24.67		| 16.42	| 7.90 |
+    | 10	| Duck Hunt	| NES	| 1984	| Shooter	| Nintendo	| 28.31	| 95.13	| 2.23	| 0.99	| 1.66 |
 
     Ainda sobre o top 10 os seguintes números se destacam sobre as plataformas e gêneros dos jogos:
     
@@ -263,7 +269,7 @@ Aqui você vai encontrar os detalhes de como está estruturado e foi desenvolvid
     | PSV |  61.63 |26.07 | 26.40 |33.90 |13.65 |
     | PS2 |  32.55 |35.88 | 20.31 | 8.42| 35.21|
 
-    O destaque é o domínio do top 3, com **PS3, X360 e Wii**, esse último tendo alguns jogos do top 10 de vendas globais, inclusive o mais vendido, apesar de não estar no topo no consolidado das plataformas.
+    O destaque é o domínio do top 3, com **PS3, X360 e Wii**, esse último tendo 5 jogos do top 10 de vendas globais, inclusive o mais vendido, apesar de não estar no topo no consolidado das plataformas.
 
     * **Gráfico 03 - Vendas de jogos por Plataforma desde 2009**
 
@@ -322,16 +328,18 @@ Aqui você vai encontrar os detalhes de como está estruturado e foi desenvolvid
     | X360 | Microsoft Game Studios|  113.07| 16.68| 51.36|
     | X360 | Activision|  108.80| 16.05|  51.36|
 
-    `Electronic Arts` e `Activision` são a 1ª e 3ª distribuidora em vendas do `PS3` e `X360`, e a `Ubisoft` é a 2% do `Wii` com mais de 10% de share nas vendas, sendo a distribuidora outra feature potencial para projeção das vendas.
+    `Electronic Arts` e `Activision` são a 1ª e 3ª distribuidora em vendas do `PS3` e `X360`, e a `Ubisoft` é a 2ª do `Wii` com mais de 10% de share nas vendas, sendo a distribuidora outra feature potencial para projeção das vendas.
 
     ### **Multiplataformas:**
-    Observando que há jogos com o nome repetido, buscou-se analisar as vendas dos jogos lançados em mais de uma plataforma.
+    Observando que há jogos com o nome repetido mas únicos por plataforma, buscou-se analisar as vendas dos jogos lançados em mais de uma plataforma.
 
     * **Gráfico 06 - Vendas de jogos multiplataforma**
 
     ![Vendas de jogos multiplataforma](docs/crossplatform_sales.png)
 
-    A soma das vendas dos jogos multiplataforma é quase que o dobro dos demais. Olhando as vendas por região, eles também tem uma fatia importante de mercado
+    A soma das vendas dos jogos multiplataforma é quase que o dobro dos demais, apesar da diferença em torno de 10% da quantidade de jogos multiplataforma à partir de 2009 (3469 contra 3105 exclusivos de uma plataforma).
+    
+    Olhando as vendas por região, eles também tem uma fatia importante de mercado:
 
     * **Gráfico 07 - Vendas de jogos multiplataforma por região**
     
@@ -343,14 +351,82 @@ Aqui você vai encontrar os detalhes de como está estruturado e foi desenvolvid
 
   </details>
 
+* ## **Projeção das venda preliminares:**
+
+  <details>
+    <summary><strong>Premissas</strong></summary>
+
+    ### **Amostra:**
+    **Para projeção das vendas, foi considerado o mesmo recorte de 15 anos da análise das plataformas**, buscando garantir uma menor latência entre a amostra e a projeção.
+
+    **Com esse corte temporal tem-se 6.574 registros sem valores nulos**, aproveitando da limpeza de dados duplicados (um registro) e a criação de uma feature para jogos multiplataforma da etapa de análise.
+
+    Da amostra, **foram separados 30% dos valores para teste e 70% para treino**.
+
+    ### **Feature Engineering:**
+    Para a modelagem, foram criadas as seguintes features:
+
+    * **Valores categóricos:**
+      * `Platform`*
+      * `Genre`*
+      * `Publisher`*
+      * `is_cross_platform`: booleano que verifica jogos multiplataforma caso aja valores duplicados de `Name`, `Genre` e `Publisher`
+      * `is_producer_platform`: booleano que verifica se a `Publisher` é a mesma produtora da `Platform` do jogo**.
+
+    * **Valores numéricos:**
+      * `na_sales_log`***
+      * `eu_sales_log`***
+      * `jp_sales_log`***
+      * `other_sales_log`***
+
+    * **Target**
+      * `global_sales_log`***
+
+      **\*Dummies**
+
+      **\*\*Mapa da Plataforma e Publisher:**
+
+      | Publisher | Platformas |
+      |-----------|------------|
+      | Microsoft Game Studios | X360<br/>XOne |
+      | Nintendo | Wii<br/>WiiU<br/>DS<br/>3DS |
+      | Sony Computer Entertainment | PS3<br/>PS4<br/>PSP<br/>PSV<br/>PS2 |
+
+      **\*\*\*Transformação dos valores de vendas com a função: ln(1+x)**
+
+    ---
+
+  </details>
+
+  <details>
+    <summary><strong>Resultados iniciais</strong></summary>
+
+    ### **Matriz de confusão:**
+    **Para a modelagem, foram utilizados os algoritmos de Regressão Linear e Random Forest**, por conta dos valores extremos e a distribuição dos dados, com a regressão podendo indicar futuras melhorias na modelagem, e o Random Forest equilibrando a distribuição dos dados.
+
+    **Para avalição dos modelos foi utilizado o erro quadrático médio (MSE)**, que indica a média dos quadrados dos erros, ou seja, a diferença entre o valor real e o valor previsto ao quadrado.
+
+    O modelo com o **Random Forest** apresentou o menor MSE, 0,0013 contra 5,89 do modelo de **Regressão Linear**, com seus preditores seguindo para construção da matriz de confusão, apresentada abaixo:
+
+    * **Matriz de confusão - Random Forest:**
+
+    |1747 | 3 |
+    |:-----:|:---:|
+    | 3 | 220 |
+
+    Com 1748 valores verdadeiros positivos, 220 verdadeiros negativos, 2 falsos positivos e 3 falsos negativos, o modelo de Random Forest apresentou uma acurácia de 99,7% o que pode indicar overfitting além de problemas das features como multicolinearidade a serem investigados.
+
+    ---
+
+  </details>
+
 
 * ## **Próximos Passos:**
   * **Previsão de vendas**
-      * **Feature Engineering** OK
-          * **Normalização dos dados numéricos (valores relativos ou log)**;
-          * **Criação de variáveis categóricas (dummies)**;
-          * **Avaliar desconsiderar Global_Sales (redundância com vendas regionais)**;
-          * **Avaliar tirar Outras Vendas (pouca representatividade)**;
+      * **Feature Engineering**; OK
+          * **Normalização dos dados numéricos (valores relativos ou log)**; OK
+          * **Conversão de variáveis categóricas (dummies)**; OK
+          * **Avaliar tirar Outras Vendas (pouca representatividade)**; OK
           * **Análise de correlação entre as variáveis**;
           * **Análise de multicolinearidade entre as variáveis**.
       * **Modelagem**
