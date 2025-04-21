@@ -439,3 +439,11 @@ Aqui você vai encontrar os detalhes de como está estruturado e foi desenvolvid
       * Vendas por gênero ao longo dos anos;
       * Plataforma mais longeva;
       * Principais publishers ao longo dos anos.
+  * Outros improvements:
+    *   Reduzir features (rever publisher?)
+    *   Talvez usar top_publishers (+5 ou +10?)
+    *   Steps:
+      * Ter sample de validação
+      * Fazer CV
+      * Tunar hiperparâmetro
+      * Tirar vendas regionais (data leakage?)
